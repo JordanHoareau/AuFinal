@@ -52,25 +52,14 @@
         <h:form>
 <h1><h:outputText value="Billetterie AuFinal" /></h1>
     <br/>
-<h:commandLink action="#{purchaseOrder.listSetup}" value="Show All PurchaseOrder Items"/>
+        <p>Welcome to the AuFinal ticket office !<br/>Right here, you'll be able to : </p>
+<h:commandLink action="#{room.listSetup}" value="Book a theatre ticket"/>
 
     <br/>
-<h:commandLink action="#{productCode.listSetup}" value="Show All ProductCode Items"/>
+<h:commandLink action="login.xhtml" value="Go to administrator dashboard"/>
 
     <br/>
-<h:commandLink action="#{product.listSetup}" value="Show All Product Items"/>
-
     <br/>
-<h:commandLink action="#{microMarket.listSetup}" value="Show All MicroMarket Items"/>
-
-    <br/>
-<h:commandLink action="#{manufacturer.listSetup}" value="Show All Manufacturer Items"/>
-
-    <br/>
-<h:commandLink action="#{discountCode.listSetup}" value="Show All DiscountCode Items"/>
-
-    <br/>
-<h:commandLink action="#{customer.listSetup}" value="Show All Customer Items"/>
 </h:form>
     <footer>Copyright © Jordan HOAREAU & Adrien FAVEZ - Tous droits réservés</footer>
     </body>

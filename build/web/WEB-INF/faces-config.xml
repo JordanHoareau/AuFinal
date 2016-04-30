@@ -14,6 +14,11 @@
             <from-outcome>welcome</from-outcome>
             <to-view-id>/welcomeJSF.jsp</to-view-id>
         </navigation-case>
+        <navigation-case>
+        <from-view-id>/login.xhtml</from-view-id>
+            <from-outcome>admin</from-outcome>
+            <to-view-id>/admin.xhtml</to-view-id>
+        </navigation-case>
     </navigation-rule>
     <managed-bean>
         <managed-bean-name>customer</managed-bean-name>
@@ -279,6 +284,51 @@
         <navigation-case>
             <from-outcome>purchaseOrder_detail</from-outcome>
             <to-view-id>/pages/purchaseOrder/Detail.jsp</to-view-id>
+        </navigation-case>
+    </navigation-rule>
+    <application>
+        <el-resolver>jpa.controllers.util.JsfCrudELResolver</el-resolver>
+    </application>
+    <managed-bean>
+        <managed-bean-name>room</managed-bean-name>
+        <managed-bean-class>jpa.controllers.RoomController</managed-bean-class>
+        <managed-bean-scope>session</managed-bean-scope>
+    </managed-bean>
+    <managed-bean>
+        <managed-bean-name>roomJpa</managed-bean-name>
+        <managed-bean-class>jpa.controllers.RoomFacade</managed-bean-class>
+        <managed-bean-scope>session</managed-bean-scope>
+    </managed-bean>
+    <converter>
+        <converter-for-class>jpa.entities.Room</converter-for-class>
+        <converter-class>jpa.controllers.RoomConverter</converter-class>
+    </converter>
+    <navigation-rule>
+        <from-view-id>*</from-view-id>
+        <navigation-case>
+            <from-outcome>room_create</from-outcome>
+            <to-view-id>/room/New.jsp</to-view-id>
+        </navigation-case>
+    </navigation-rule>
+    <navigation-rule>
+        <from-view-id>*</from-view-id>
+        <navigation-case>
+            <from-outcome>room_list</from-outcome>
+            <to-view-id>/room/List.jsp</to-view-id>
+        </navigation-case>
+    </navigation-rule>
+    <navigation-rule>
+        <from-view-id>*</from-view-id>
+        <navigation-case>
+            <from-outcome>room_edit</from-outcome>
+            <to-view-id>/room/Edit.jsp</to-view-id>
+        </navigation-case>
+    </navigation-rule>
+    <navigation-rule>
+        <from-view-id>*</from-view-id>
+        <navigation-case>
+            <from-outcome>room_detail</from-outcome>
+            <to-view-id>/room/Detail.jsp</to-view-id>
         </navigation-case>
     </navigation-rule>
 </faces-config>
