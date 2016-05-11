@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.EditMovieTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{bundle.EditMovieLabel_movieid}" for="movieid" />
+                    <h:inputText id="movieid" value="#{movieController.selected.movieid}" title="#{bundle.EditMovieTitle_movieid}" required="true" requiredMessage="#{bundle.EditMovieRequiredMessage_movieid}"/>
+                    <h:outputLabel value="#{bundle.EditMovieLabel_movietitle}" for="movietitle" />
+                    <h:inputText id="movietitle" value="#{movieController.selected.movietitle}" title="#{bundle.EditMovieTitle_movietitle}" required="true" requiredMessage="#{bundle.EditMovieRequiredMessage_movietitle}"/>
+                    <h:outputLabel value="#{bundle.EditMovieLabel_movieprice}" for="movieprice" />
+                    <h:inputText id="movieprice" value="#{movieController.selected.movieprice}" title="#{bundle.EditMovieTitle_movieprice}" required="true" requiredMessage="#{bundle.EditMovieRequiredMessage_movieprice}"/>
+                    <h:outputLabel value="#{bundle.EditMovieLabel_moviedesc}" for="moviedesc" />
+                    <h:inputText id="moviedesc" value="#{movieController.selected.moviedesc}" title="#{bundle.EditMovieTitle_moviedesc}" />
+                    <h:outputLabel value="#{bundle.EditMovieLabel_movieyear}" for="movieyear" />
+                    <h:inputText id="movieyear" value="#{movieController.selected.movieyear}" title="#{bundle.EditMovieTitle_movieyear}" />
+                </h:panelGrid>
+                <h:commandLink action="#{movieController.update}" value="#{bundle.EditMovieSaveLink}"/>
+                <br />
+                <br />
+                <h:link outcome="View" value="#{bundle.EditMovieViewLink}"/>
+                <br />
+                <h:commandLink action="#{movieController.prepareList}" value="#{bundle.EditMovieShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.EditMovieIndexLink}" />
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>
