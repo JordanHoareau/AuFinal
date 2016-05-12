@@ -6,7 +6,7 @@
   <artifactId>Network</artifactId>
   <packaging>war</packaging>
   <version>1.0-SNAPSHOT</version>
-  <name>Bibliothèque - Projet JEE6</name>
+  <name>PolyProAgenda</name>
   
     <build>
         <plugins>
