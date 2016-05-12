@@ -1,0 +1,59 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core">
+    <h:head>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <script type="text/javascript" language="javascript">
+            function confirmDelete(){
+                if (confirm("Voulez-vous vraiment supprimmer ce(s) films(s) ?"))
+                    return true;
+                return false;
+            }
+        </script>
+
+
+        <title>List of films</title>
+    </h:head>
+    <h:body>
+        <h1>List of films</h1>
+        <hr/>
+        <h:form>
+            <h:dataTable value="#{filmController.filmList}" var="f" border="1">
+                <h:column>
+                    <f:facet name="header">
+                        <h:outputText value="Sélection"/>
+                    </f:facet>
+                    <h:selectBooleanCheckbox value="#{f.selected}"/>
+                </h:column>
+
+                <h:column>
+                    <f:facet name="header">
+                        <h:outputText value="ID"/>
+                    </f:facet>
+                    <h:commandLink action="#{filmController.doEdit}" value="#{f.id}" />
+                </h:column>
+                
+                <h:column>
+                    <f:facet name="header">
+                        <h:outputText value="Titre"/>
+                    </f:facet>
+                    <h:commandLink action="#{filmController.doEdit}" value="#{f.title}" />
+                </h:column>
+                <h:column>
+                    <f:facet name="header">
+                        <h:outputText value="Description"/>
+                    </f:facet>
+                    <h:commandLink action="#{filmController.doEdit}" value="#{f.description}" />
+                </h:column>
+            </h:dataTable>
+
+            <h:commandLink action="#{filmController.doNew}">Create a new film  </h:commandLink>
+            <h:outputText value="&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"/>
+            <h:commandLink action="#{filmController.doDelete}" onclick="return confirmDelete();">Delete selection</h:commandLink>
+        </h:form>
+        <hr/>
+        <i>APress - Beginning Java EE 6</i>
+    </h:body>
+</html>

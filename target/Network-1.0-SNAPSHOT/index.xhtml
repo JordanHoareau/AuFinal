@@ -1,0 +1,35 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core">
+<h:head>
+    <title>PolyBilletterie</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+</h:head>
+<h:body>
+    <h1>Accueil</h1>
+    <p>Bienvenue sur la PolyBilletterie ! Vous pourrez sur ce site internet :</p>
+    <h:form>
+        <h:commandButton value="Découvrir les films disponibles" action="film/listFilms.faces"/>
+    </h:form>
+    <h:form>
+        <h:commandButton value="Éditer les séances" action="seance/listSeances.faces"/>
+    </h:form>
+    
+    <h:form>
+        <h:commandButton value="Éditer les tickets" action="ticket/listTickets.faces"/>
+    </h:form>
+    <h:form>
+        <h:commandButton value="Se connecter" action="userlogin.jsp"/>
+    </h:form>
+    <ul>
+        <li><a href="">Se tenir informé des horaires de notre cinéma</a></li>
+    </ul>
+</h:body>
+<footer>
+    <hr/>
+    <a href="admin/adminlogin.jsp">Panneau d'administration</a>
+    <p>Adrien Favez - Jordan Hoareau - Sofian Makroum - Oceane Michel © 2016</p>
+</footer>
+</html>
