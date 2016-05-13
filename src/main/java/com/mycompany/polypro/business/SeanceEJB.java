@@ -43,4 +43,8 @@ public class SeanceEJB {
     public void delete(Seance seance) {
         em.remove(em.merge(seance));
     }
+    
+    public void update(Seance seance) {
+        em.merge(seance);
+    }
 }

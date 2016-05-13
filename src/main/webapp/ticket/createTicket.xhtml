@@ -11,11 +11,14 @@
         <table border="0">
             <tr>
                 <td><h:outputLabel value="Remboursable : "/></td>
-                <td><h:inputTextarea value="#{ticketController.ticket.remboursable}" cols="20" rows="5"/></td>
-            </tr>
-            <tr>
-                <td><h:outputLabel value="Numero Place : "/></td>
-                <td><h:inputText value="#{ticketController.ticket.numero_place}"/></td>
+                <td>
+                    <h:selectOneRadio id="subscriptions"
+                      value="#{ticketController.ticket.remboursable}">
+                        <f:selectItem id="item1" itemLabel="Oui" itemValue="true" />
+                        <f:selectItem id="item2" itemLabel="Non" itemValue="false" />
+                    </h:selectOneRadio>
+                    
+                </td>
             </tr>
          </table>
 

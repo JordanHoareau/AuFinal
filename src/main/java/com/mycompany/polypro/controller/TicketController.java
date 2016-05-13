@@ -43,6 +43,7 @@ public class TicketController {
     public String doCreate() {
         ticket = ticketEJB.create(ticket);
         updateTicketList();
+        ticket = new Ticket();
         return "listTickets.xhtml";
     }
     
@@ -67,7 +68,9 @@ public class TicketController {
     }
 
     public String doSave() {
-        // ajouter ce qui manque ici
+        ticketEJB.update(ticket);
+        updateTicketList();
+        ticket = new Ticket();
         return "listTickets.xhtml";
     }
     // ======================================

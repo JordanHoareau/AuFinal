@@ -29,7 +29,9 @@ public class FilmController {
     private ListDataModel filmList; // j'ai utilisé un ListDataModel et pas List parce que cela permet de retrouver l'élément sélectionné dans la liste (pour l'édition d'un livre)
 
     private void updateFilmList() {
-        filmList = new ListDataModel(filmEJB.findAll());
+        ArrayList<Film> list = new ArrayList<Film>();
+        list.addAll(filmEJB.findAll());
+        filmList = new ListDataModel(list);
     }
 
     // ======================================
@@ -43,6 +45,7 @@ public class FilmController {
     public String doCreate() {
         film = filmEJB.create(film);
         updateFilmList();
+        film = new Film();
         return "listFilms.xhtml";
     }
     
@@ -67,7 +70,9 @@ public class FilmController {
     }
 
     public String doSave() {
-        // ajouter ce qui manque ici
+        filmEJB.update(film);
+        updateFilmList();
+        film = new Film();
         return "listFilms.xhtml";
     }
     // ======================================

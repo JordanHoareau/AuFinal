@@ -2,6 +2,7 @@ package com.mycompany.polypro.controller;
 
 import com.mycompany.polypro.model.Seance;
 import com.mycompany.polypro.business.SeanceEJB;
+import java.util.ArrayList;
 import javax.faces.bean.ManagedBean;
 import javax.ejb.EJB;
 import java.util.Iterator;
@@ -28,7 +29,9 @@ public class SeanceController {
     private ListDataModel seanceList; 
 
     private void updateSeanceList() {
-        seanceList = new ListDataModel(seanceEJB.findAll());
+        ArrayList<Seance> list = new ArrayList<Seance>();
+        list.addAll(seanceEJB.findAll());
+        seanceList = new ListDataModel(list);
     }
 
     // ======================================
@@ -42,6 +45,7 @@ public class SeanceController {
     public String doCreate() {
         seance = seanceEJB.create(seance);
         updateSeanceList();
+        seance = new Seance();
         return "listSeances.xhtml";
     }
     
@@ -66,7 +70,9 @@ public class SeanceController {
     }
 
     public String doSave() {
-        // ajouter ce qui manque ici
+        seanceEJB.update(seance);
+        updateSeanceList();
+        seance = new Seance();
         return "listSeances.xhtml";
     }
     // ======================================

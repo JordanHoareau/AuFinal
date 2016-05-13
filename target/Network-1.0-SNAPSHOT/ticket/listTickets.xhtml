@@ -31,15 +31,16 @@
                 
                 <h:column>
                     <f:facet name="header">
-                        <h:outputText value="remboursable"/>
+                        <h:outputText value="Remboursable"/>
                     </f:facet>
                     <h:commandLink action="#{ticketController.doEdit}" value="#{ti.remboursable}" />
                 </h:column>
+                
                 <h:column>
                     <f:facet name="header">
-                        <h:outputText value="NumeroPlace"/>
+                        <h:outputText value="Prix total"/>
                     </f:facet>
-                    <h:commandLink action="#{ticketController.doEdit}" value="#{ti.numero_place}" />
+                    <h:commandLink action="#{ticketController.doEdit}" value="#{ti.prixTotal}" />
                 </h:column>
             </h:dataTable>
 

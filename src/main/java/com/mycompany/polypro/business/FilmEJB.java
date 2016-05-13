@@ -43,4 +43,8 @@ public class FilmEJB {
     public void delete(Film film) {
         em.remove(em.merge(film));
     }
+    
+    public void update(Film film) {
+        em.merge(film);
+    }
 }

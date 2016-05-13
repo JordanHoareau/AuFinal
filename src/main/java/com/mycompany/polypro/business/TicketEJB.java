@@ -42,5 +42,9 @@ public class TicketEJB {
 
     public void delete(Ticket ticket) {
         em.remove(em.merge(ticket));
+    }    
+      
+    public void update(Ticket ticket) {
+        em.merge(ticket);
     }
 }

@@ -6,20 +6,20 @@
 package com.mycompany.polypro.model;
 
 
-import java.util.Date;
+import java.io.Serializable;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.NamedQuery;
-import javax.persistence.Temporal;
+import javax.persistence.OneToOne;
 import javax.persistence.Transient;
 
 
 @Entity
 @NamedQuery(name = Ticket.FIND_ALL, query = "SELECT b FROM Ticket b")
 
-public class Ticket {
+public class Ticket implements Serializable {
    public final static String FIND_ALL = "Ticket.findAll";
    public final static String Del_SOM = "Ticket.delete";
 
@@ -28,7 +28,11 @@ public class Ticket {
     private long id;
     @Column(nullable = false)
     private boolean  remboursable;
-    private int numero_place;
+    private int prixTotal;
+    
+    @OneToOne
+    private Seance seance;
+    
     @Transient
     private Boolean selected;
 
@@ -36,19 +40,37 @@ public class Ticket {
     // =            Constructors            =
     // ======================================
 
-    public Ticket() {
+    public Ticket() {   
     }
 
-    public Ticket(boolean r, int np) {
-        
+    public Ticket(boolean r, int tp) {
+       int supplement = 0;
        this.remboursable =r;
-       this.numero_place=np;
+       supplement = (!remboursable) ? 0 : 1;
+       System.out.println(supplement+"--------------------------------------------------------------------------------------");
+       this.prixTotal = supplement;
 
     }
 
     // ======================================
     // =          Getters & Setters         =
     // ======================================
+
+    public int getPrixTotal() {
+        return prixTotal;
+    }
+
+    public void setPrixTotal(int prixTotal) {
+        this.prixTotal = prixTotal;
+    }
+
+    public Seance getSeance() {
+        return seance;
+    }
+
+    public void setSeance(Seance seance) {
+        this.seance = seance;
+    }
     
     
     public long getId(){
@@ -59,13 +81,6 @@ public class Ticket {
         this.id = id;
     }
 
-    public int getNumero_place() {
-        return numero_place;
-    }
-    
-    public void setNumero_place(int numero_place) {
-        this.numero_place = numero_place;
-    }
 
     public boolean getRemboursable() {
         return this.remboursable;
@@ -74,10 +89,7 @@ public class Ticket {
     public void setRemboursable(boolean b){
         this.remboursable=b;
     }
-    
-    public void setNom(int n){
-        this.numero_place=n;
-    }
+ 
             
     public Boolean isSelected() {
         return selected;
@@ -101,7 +113,6 @@ public class Ticket {
         sb.append("Ticket");
         sb.append("{id=").append(id);
         sb.append(", remboursable='").append(remboursable).append('\'');
-        sb.append(", numero_place=").append(numero_place);
 
         sb.append('}');
         return sb.toString();

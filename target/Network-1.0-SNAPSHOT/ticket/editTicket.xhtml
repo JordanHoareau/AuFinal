@@ -1,7 +1,8 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
         "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:h="http://java.sun.com/jsf/html">
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core">
 <h:head>
     <title>Editer un Ticket</title>
 </h:head>
@@ -11,18 +12,21 @@
             <tr>
                 <td><h:outputLabel value="Remboursable :"/></td>
                 <td><h:inputText value="#{ticketController.ticket.remboursable}"/></td>
+                <td>
+                    <h:selectOneRadio id="subscriptions"
+                      value="#{ticketController.ticket.remboursable}">
+                        <f:selectItem id="item1" itemLabel="Oui" itemValue="true" />
+                        <f:selectItem id="item2" itemLabel="Non" itemValue="false" />
+                    </h:selectOneRadio>
+                </td>
             </tr>
-            <tr>
-                <td><h:outputLabel value="Numero Place : "/></td>
-                <td><h:inputText value="#{ticketController.ticket.numero_place}"/></td>
-            </tr>         
         </table>
 
         <h:commandButton value="Sauver" action="#{ticketController.doSave}"/>
 
     </h:form>
     <hr/>
-    <i>APress - Beginning Java EE 6</i>
+    <i>APress - Beginning Javaeaeaeaea EE 6</i>
 
 </h:body>
 </html>
