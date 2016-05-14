@@ -14,12 +14,19 @@
         </script>
 
 
-        <title>List of films</title>
+        <title>Liste des films | Au Final</title>
     </h:head>
     <h:body>
-        <h1>List of films</h1>
+        <h1>Liste des films</h1>
         <hr/>
         <h:form>
+        <nav>
+            <p>
+                <h:commandLink value="Accueil" action="defaut.htm"/> 
+                >> 
+                <h:commandLink value="Liste des films" action="film/listFilms.faces"/>
+            </p>
+        </nav>
             <h:dataTable value="#{filmController.filmList}" var="f" border="1">
                 <h:column>
                     <f:facet name="header">
@@ -49,11 +56,15 @@
                 </h:column>
             </h:dataTable>
 
-            <h:commandLink action="#{filmController.doNew}">Create a new film  </h:commandLink>
+            <h:commandButton action="#{filmController.doNew}" value="Create a new film"  />
             <h:outputText value="&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"/>
-            <h:commandLink action="#{filmController.doDelete}" onclick="return confirmDelete();">Delete selection</h:commandLink>
+            <h:commandButton action="#{filmController.doDelete}" onclick="return confirmDelete();" value="Delete selection"/>
         </h:form>
-        <hr/>
-        <i>APress - Beginning Java EE 6</i>
     </h:body>
+    
+<footer>
+    <hr/>
+    <a href="admin/adminlogin.jsp">Panneau d'administration</a>
+    <p>Adrien Favez - Jordan Hoareau - Sofian Makroum - Oceane Michel © 2016</p>
+</footer>
 </html>
