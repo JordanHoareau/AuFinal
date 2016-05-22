@@ -1,0 +1,99 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:shiro="http://shiro.apache.org/tags">
+    <ui:composition template="/WEB-INF/templates/classic.xhtml">
+
+        <ui:define name="title">Liste des livres</ui:define>
+
+        <ui:define name="main">
+            <h:form>
+                <h:dataTable value="#{seanceController.seanceList}" var="se" border="1">
+                    <h:column>
+                        <h:selectBooleanCheckbox value="#{se.selected}"/>
+                    </h:column>
+
+                    <h:column>
+                        <f:facet name="header">
+                            <h:outputText value="ID"/>
+                        </f:facet>
+                        <h:commandLink action="#{seanceController.doEdit}" value="#{se.id}" />
+                    </h:column>
+
+                    <h:column>
+                        <f:facet name="header">
+                            <h:outputText value="JourSemaine"/>
+                        </f:facet>
+                        <h:commandLink action="#{seanceController.doEdit}" value="#{se.jourSemaine}" />
+                    </h:column>
+                    <h:column>
+                        <f:facet name="header">
+                            <h:outputText value="PlacesRestantes"/>
+                        </f:facet>
+                        <h:commandLink action="#{seanceController.doEdit}" value="#{se.nbPlacesRestantes}" />
+                    </h:column>
+                </h:dataTable>
+                <shiro:hasPermission name="seance:add">                    
+                    <h:commandLink action="#{seanceController.doNew}">Ajouter une nouvelle séance</h:commandLink>
+                </shiro:hasPermission>
+                <h:outputText value="&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"/>
+                <shiro:hasPermission name="seance:delete">
+                    <h:commandLink action="#{seanceController.doDelete}" onclick="return confirmDelete();">Supprimer la sélection</h:commandLink>
+                </shiro:hasPermission>
+                
+            </h:form>
+        </ui:define>
+        
+    </ui:composition>
+    
+    <!--<h:head>
+        <script type="text/javascript" language="javascript">
+            function confirmDelete(){
+                if (confirm("Voulez-vous vraiment supprimmer ce(s) seance(s) ?"))
+                    return true;
+                return false;
+            }
+        </script>
+
+
+        <title>List des Seances</title>
+    </h:head>
+    <h:body>
+        <h:form>
+            <h:dataTable value="#{seanceController.seanceList}" var="se" border="1">
+                <h:column>
+                    <h:selectBooleanCheckbox value="#{se.selected}"/>
+                </h:column>
+                
+                <h:column>
+                    <f:facet name="header">
+                        <h:outputText value="ID"/>
+                    </f:facet>
+                    <h:commandLink action="#{seanceController.doEdit}" value="#{se.id}" />
+                </h:column>
+                                
+                <h:column>
+                    <f:facet name="header">
+                        <h:outputText value="JourSemaine"/>
+                    </f:facet>
+                    <h:commandLink action="#{seanceController.doEdit}" value="#{se.jourSemaine}" />
+                </h:column>
+                <h:column>
+                    <f:facet name="header">
+                        <h:outputText value="PlacesRestantes"/>
+                    </f:facet>
+                    <h:commandLink action="#{seanceController.doEdit}" value="#{se.nbPlacesRestantes}" />
+                </h:column>
+            </h:dataTable>
+
+            <h:commandLink action="#{seanceController.doNew}">Ajouter une nouvelle seance </h:commandLink>
+            <h:outputText value="&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;"/>
+            <h:commandLink action="#{seanceController.doDelete}" onclick="return confirmDelete();">Delete selection</h:commandLink>
+        </h:form>
+        <hr/>
+        <i>APress - Beginning Java EE 6</i>
+    </h:body>-->
+</html>
